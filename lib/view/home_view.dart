@@ -2,6 +2,7 @@ import 'package:open_screener/view/start_visit_view.dart';
 import 'package:flutter/material.dart';
 
 String startVisitScreenTitle = "Start Visit";
+String savedVisitScreen = "Saved";
 
 class HomeView extends StatefulWidget {
   HomeView({Key key, this.title}) : super(key: key);
@@ -47,7 +48,7 @@ class HomeViewState extends State<HomeView> {
         new BottomNavigationBarItem(
             icon: new Icon(Icons.list), title: new Text(startVisitScreenTitle)),
         new BottomNavigationBarItem(
-            icon: new Icon(Icons.map), title: new Text("Map")),
+            icon: new Icon(Icons.save), title: new Text(savedVisitScreen)),
       ],
     );
 
