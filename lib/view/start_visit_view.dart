@@ -11,13 +11,13 @@ class _StartVisitViewState extends State<StartVisitView> {
   @override
   void initState() {
     super.initState();
-
- }
+  }
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      body: new Container(
+        body: new Container(
           child: new Text("yeehaw"),
-          ));
+        ));
   }
+}
