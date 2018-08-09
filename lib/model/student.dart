@@ -1,7 +1,10 @@
+import 'package:meta/meta.dart';
+
+
 class Student {
   Student({
-    @require this.name,
+    @required this.name,
   });
 
-  final name;
+  final String name;
 }

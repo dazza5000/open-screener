@@ -9,7 +9,7 @@ String studentNameField = "name";
 
 class StudentRepository {
 
-  static Future<List<Student>> _getStudentsFromFirestore() async {
+  static Future<List<Student>> getStudentsFromFirestore() async {
     CollectionReference ref = Firestore.instance
         .collection(schoolReference)
         .document("cY4jbxnT59Rm64jKMYOp")
@@ -19,8 +19,8 @@ class StudentRepository {
         .orderBy(studentNameField)
         .getDocuments();
 
-    return studentQuery.documents.forEach((document) {
+    return studentQuery.documents.map((document) {
       new Student(name: document[studentNameField]);
-    });
+    }).toList();
   }
 }
