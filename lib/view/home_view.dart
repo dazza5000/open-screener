@@ -1,3 +1,5 @@
+import 'package:open_screener/main.dart';
+import 'package:open_screener/util/color_util.dart';
 import 'package:open_screener/view/start_visit_view.dart';
 import 'package:flutter/material.dart';
 
@@ -38,9 +40,12 @@ class HomeViewState extends State<HomeView> {
         body: GridView.builder(
             scrollDirection: Axis.vertical,
             gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: .8, crossAxisCount: 2),
+                childAspectRatio: 1.0,
+                crossAxisCount: 2,
+            crossAxisSpacing: 4.0,
+            mainAxisSpacing: 4.0),
             itemCount: homeButtons.length,
-            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+            padding: const EdgeInsets.all(4.0),
             itemBuilder: (context, index) {
               return MaterialButton(
                   onPressed: () {
@@ -49,7 +54,8 @@ class HomeViewState extends State<HomeView> {
                         MaterialPageRoute(
                             builder: (context) => StartVisitView()));
                   },
-                  child: Text(homeButtons[index]));
+                  child: Text(homeButtons[index]),
+                  color: ColorUtil.hexToColor(colorPrimary));
             }));
   }
 }

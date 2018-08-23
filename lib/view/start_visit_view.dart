@@ -23,6 +23,9 @@ class _StartVisitViewState extends State<StartVisitView> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+        appBar: new AppBar(
+          title: new Text("Student List"),
+        ),
       body: new Container(
           child: students.length == 0
               ? new Center(child: new CircularProgressIndicator())
