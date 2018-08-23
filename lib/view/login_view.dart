@@ -43,7 +43,6 @@ class _LoginPageState extends State<LoginView> {
       padding: EdgeInsets.symmetric(vertical: 16.0),
       child: Material(
         borderRadius: BorderRadius.circular(30.0),
-        shadowColor: Colors.lightBlueAccent.shade100,
         elevation: 5.0,
         child: MaterialButton(
           minWidth: 200.0,
@@ -51,8 +50,7 @@ class _LoginPageState extends State<LoginView> {
           onPressed: () {
             Navigator.of(context).pushNamed(Constants.ROUTE_HOME_VIEW);
           },
-          color: Colors.lightBlueAccent,
-          child: Text('Log In', style: TextStyle(color: Colors.white)),
+          child: Text('Log In',),
         ),
       ),
     );
@@ -60,13 +58,11 @@ class _LoginPageState extends State<LoginView> {
     final forgotLabel = FlatButton(
       child: Text(
         'Forgot password?',
-        style: TextStyle(color: Colors.black54),
       ),
       onPressed: () {},
     );
 
     return Scaffold(
-      backgroundColor: Colors.white,
       body: Center(
         child: ListView(
           shrinkWrap: true,
