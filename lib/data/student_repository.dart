@@ -18,7 +18,8 @@ class StudentRepository {
         await ref.orderBy(studentNameField).getDocuments();
 
     return studentQuery.documents.map((document) {
-      new Student(name: document[studentNameField]);
+      print("student name is :" + document.data[studentNameField]);
+      return new Student(name: document.data[studentNameField]);
     }).toList();
   }
 }
