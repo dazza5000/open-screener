@@ -14,18 +14,15 @@ class HomeView extends StatefulWidget {
 }
 
 class HomeViewState extends State<HomeView> {
+  final List<String> homeButtons = [
+    "Start",
+    "Saved",
+    "Incomplete",
+    "Sync with Server",
+    "Log out"
+  ];
 
-  int currentTab = 0;
   StartVisitView startVisitView = new StartVisitView();
-  List<Widget> pages;
-  Widget currentPage;
-
-  @override
-  void initState() {
-    super.initState();
-    pages = [startVisitView]; // Populate our pages list.
-    currentPage = startVisitView;
-  }
 
   @override
   void dispose() {
@@ -34,30 +31,25 @@ class HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-
-    // Here we create our BottomNavigationBar.
-    final BottomNavigationBar navBar = new BottomNavigationBar(
-      currentIndex: currentTab,
-      onTap: (int numTab) {
-        setState(() {
-          currentTab = numTab;
-          currentPage = pages[numTab];
-        });
-      },
-      items: <BottomNavigationBarItem>[
-        new BottomNavigationBarItem(
-            icon: new Icon(Icons.list), title: new Text(startVisitScreenTitle)),
-        new BottomNavigationBarItem(
-            icon: new Icon(Icons.save), title: new Text(savedVisitScreen)),
-      ],
-    );
-
     return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
-      ),
-      bottomNavigationBar: navBar, // Assigning our navBar to the Scaffold's bottomNavigationBar property.
-      body: currentPage, // The body will be the currentPage. Which we update when a tab is pressed.
-    );
+        appBar: new AppBar(
+          title: new Text(widget.title),
+        ),
+        body: GridView.builder(
+            scrollDirection: Axis.vertical,
+            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
+                childAspectRatio: .8, crossAxisCount: 2),
+            itemCount: homeButtons.length,
+            padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+            itemBuilder: (context, index) {
+              return MaterialButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => StartVisitView()));
+                  },
+                  child: Text(homeButtons[index]));
+            }));
   }
 }
