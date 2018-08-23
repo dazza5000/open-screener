@@ -8,16 +8,14 @@ String studentReference = "student";
 String studentNameField = "name";
 
 class StudentRepository {
-
   static Future<List<Student>> getStudentsFromFirestore() async {
     CollectionReference ref = Firestore.instance
         .collection(schoolReference)
         .document("cY4jbxnT59Rm64jKMYOp")
-    .collection(studentReference);
+        .collection(studentReference);
 
-    QuerySnapshot studentQuery = await ref
-        .orderBy(studentNameField)
-        .getDocuments();
+    QuerySnapshot studentQuery =
+        await ref.orderBy(studentNameField).getDocuments();
 
     return studentQuery.documents.map((document) {
       new Student(name: document[studentNameField]);
