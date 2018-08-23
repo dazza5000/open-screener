@@ -31,7 +31,6 @@ class _LoginPageState extends State<LoginView> {
 
     final password = TextFormField(
       autofocus: false,
-      initialValue: 'some password',
       obscureText: true,
       decoration: InputDecoration(
         hintText: 'Password',
