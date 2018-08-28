@@ -1,6 +1,7 @@
 import 'package:open_screener/main.dart';
 import 'package:open_screener/util/color_util.dart';
-import 'package:open_screener/view/start_visit_view.dart';
+import 'package:open_screener/view/screening_type_list_view.dart';
+import 'package:open_screener/view/student_list_view.dart';
 import 'package:flutter/material.dart';
 
 String startVisitScreenTitle = "Start Visit";
@@ -24,7 +25,7 @@ class HomeViewState extends State<HomeView> {
     "Log out"
   ];
 
-  StartVisitView startVisitView = new StartVisitView();
+  StudentListView startVisitView = new StudentListView();
 
   @override
   void dispose() {
@@ -52,7 +53,7 @@ class HomeViewState extends State<HomeView> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => StartVisitView()));
+                            builder: (context) => ScreeningTypeListView()));
                   },
                   child: Text(homeButtons[index]),
                   color: ColorUtil.hexToColor(colorPrimary));
