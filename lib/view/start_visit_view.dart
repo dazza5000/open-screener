@@ -23,16 +23,18 @@ class _StartVisitViewState extends State<StartVisitView> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text("Student List"),
-        ),
+      appBar: new AppBar(
+        title: new Text("Student List"),
+      ),
       body: new Container(
           child: students.length == 0
               ? new Center(child: new CircularProgressIndicator())
               : new ListView.builder(
                   padding: const EdgeInsets.all(16.0),
-                  itemCount: students.length,
+                  itemCount: students.length * 2,
                   itemBuilder: (_, index) {
+                    if (index.isOdd) return Divider();
+                    index = index ~/ 2;
                     return _buildRow(students[index]);
                   },
                 )),
@@ -41,9 +43,18 @@ class _StartVisitViewState extends State<StartVisitView> {
 
   Widget _buildRow(Student student) {
     return new GestureDetector(
-        child: new Card(
-            child: new Row(
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[new Text(student.name)])));
+        child: Row(
+      children: <Widget>[
+        new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              new Text("Name: " + student.firstName + " " + student.lastName),
+              new Text("DOB: " + student.dob),
+              new Text(
+                  "Grade: " + student.grade + " Teacher: " + student.teacher)
+            ]),
+      ],
+    ));
   }
 }
