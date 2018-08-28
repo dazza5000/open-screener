@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:open_screener/data/student_repository.dart';
 import 'package:open_screener/model/student.dart';
 
-class StartVisitView extends StatefulWidget {
+class StudentListView extends StatefulWidget {
   @override
   _StartVisitViewState createState() => new _StartVisitViewState();
 }
 
-class _StartVisitViewState extends State<StartVisitView> {
+class _StartVisitViewState extends State<StudentListView> {
   List<Student> students = [];
 
   @override
