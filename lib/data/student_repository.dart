@@ -24,15 +24,34 @@ class StudentRepository {
         await ref.orderBy(studentFirstNameField).getDocuments();
 
     return studentQuery.documents.map((document) {
-      return new Student(
-        firstName: document.data[studentFirstNameField],
-        lastName: document.data[studentLastNameField],
-        grade: document.data[studentGradeField],
-        teacher: document.data[studentTeacherField],
-        dob: document.data[studentDobField],
-        peim: document.data[studentPeimField],
-        gender: document.data[studentGenderField],
-      );
+      return parseStudentFromFirebase(document);
     }).toList();
+  }
+
+  static Future<Student> getStudentFromFirestore(String studentId) async {
+    CollectionReference ref = Firestore.instance
+        .collection(schoolReference)
+        .document("2HA7J6vXcTJFU2E3lfvx")
+        .collection(studentReference)
+    .where(studentPeimField, isEqualTo: studentId);
+
+    QuerySnapshot studentQuery =
+    await ref.getDocuments();
+
+    return studentQuery.documents.map((document) {
+      return parseStudentFromFirebase(document);
+    }).toList()[0];
+  }
+
+  static Student parseStudentFromFirebase(DocumentSnapshot document) {
+    return new Student(
+      firstName: document.data[studentFirstNameField],
+      lastName: document.data[studentLastNameField],
+      grade: document.data[studentGradeField],
+      teacher: document.data[studentTeacherField],
+      dob: document.data[studentDobField],
+      peim: document.data[studentPeimField],
+      gender: document.data[studentGenderField],
+    );
   }
 }

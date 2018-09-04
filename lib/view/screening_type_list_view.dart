@@ -34,20 +34,18 @@ class _ScreeningListViewState extends State<ScreeningTypeListView> {
           new Text(
             "Select all of the screenings you will conduct during this session",
           ),
-          Flexible(
-            child: new Container(
-                child: screeningTypes.length == 0
-                    ? new Center(child: new CircularProgressIndicator())
-                    : new ListView.builder(
-                        padding: const EdgeInsets.all(16.0),
-                        itemCount: screeningTypes.length * 2,
-                        itemBuilder: (_, index) {
-                          if (index.isOdd) return Divider();
-                          index = index ~/ 2;
-                          return _buildRow(screeningTypes[index]);
-                        },
-                      )),
-          ),
+          new Container(
+              child: screeningTypes.length == 0
+                  ? new Center(child: new CircularProgressIndicator())
+                  : new ListView.builder(
+                      padding: const EdgeInsets.all(16.0),
+                      itemCount: screeningTypes.length * 2,
+                      itemBuilder: (_, index) {
+                        if (index.isOdd) return Divider();
+                        index = index ~/ 2;
+                        return _buildRow(screeningTypes[index]);
+                      },
+                    )),
           FlatButton(
             child: Text("Next"),
             onPressed: () {
