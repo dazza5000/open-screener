@@ -32,7 +32,8 @@ class _ScreeningListViewState extends State<ScreeningTypeListView> {
       body: Column(
         children: <Widget>[
           new Text(
-              "Select all of the screenings you will conduct during this session",),
+            "Select all of the screenings you will conduct during this session",
+          ),
           Flexible(
             child: new Container(
                 child: screeningTypes.length == 0
@@ -47,12 +48,13 @@ class _ScreeningListViewState extends State<ScreeningTypeListView> {
                         },
                       )),
           ),
-          FlatButton(child: Text("Next"), onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => StudentListView()));
-          },),
+          FlatButton(
+            child: Text("Next"),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => StudentListView()));
+            },
+          ),
         ],
       ),
     );
