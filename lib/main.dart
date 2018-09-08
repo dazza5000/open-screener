@@ -9,7 +9,6 @@ String appName = "Open Screener";
 void main() => runApp(new OpenScreener());
 
 class OpenScreener extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

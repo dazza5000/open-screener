@@ -50,7 +50,9 @@ class _LoginPageState extends State<LoginView> {
           onPressed: () {
             Navigator.of(context).pushNamed(Constants.ROUTE_SCHOOL_LIST_VIEW);
           },
-          child: Text('Log In',),
+          child: Text(
+            'Log In',
+          ),
         ),
       ),
     );

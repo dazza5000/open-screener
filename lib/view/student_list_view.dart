@@ -45,22 +45,27 @@ class _StartVisitViewState extends State<StudentListView> {
   Widget _buildRow(Student student) {
     return new GestureDetector(
         child: Row(
-      children: <Widget>[
-        new Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              new Text("Name: " + student.firstName + " " + student.lastName),
-              new Text("DOB: " + student.dob),
-              new Text(
-                  "Grade: " + student.grade + " Teacher: " + student.teacher)
-            ]),
-      ],
-    ), onTap:() {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-              builder: (context) => StudentDetailView(studentId: student.peim)));
-    });
+          children: <Widget>[
+            new Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  new Text(
+                      "Name: " + student.firstName + " " + student.lastName),
+                  new Text("DOB: " + student.dob),
+                  new Text("Grade: " +
+                      student.grade +
+                      " Teacher: " +
+                      student.teacher)
+                ]),
+          ],
+        ),
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      StudentDetailView(studentId: student.peim)));
+        });
   }
 }

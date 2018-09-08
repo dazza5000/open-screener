@@ -14,14 +14,13 @@ class _SchoolListViewState extends State<SchoolListView> {
   @override
   void initState() {
     super.initState();
-    SchoolRepository
-        .getSchoolsFromFirestore()
-        .then((List<School> schools) {
+    SchoolRepository.getSchoolsFromFirestore().then((List<School> schools) {
       setState(() {
         this.schools = schools;
       });
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -31,26 +30,19 @@ class _SchoolListViewState extends State<SchoolListView> {
       body: Column(
         children: <Widget>[
           new Text(
-            "Select all of the screenings you will conduct during this session",
+            "Upcoming Visits",
           ),
           Expanded(
             child: new Container(
                 child: schools.length == 0
                     ? new Center(child: new CircularProgressIndicator())
                     : new ListView.builder(
-                  padding: const EdgeInsets.all(16.0),
-                  itemCount: schools.length,
-                  itemBuilder: (_, index) {
-                    return _buildRow(schools[index]);
-                  },
-                )),
-          ),
-          FlatButton(
-            child: Text("Next"),
-            onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => StudentListView()));
-            },
+                        padding: const EdgeInsets.all(16.0),
+                        itemCount: schools.length,
+                        itemBuilder: (_, index) {
+                          return _buildRow(schools[index]);
+                        },
+                      )),
           ),
         ],
       ),
@@ -60,7 +52,10 @@ class _SchoolListViewState extends State<SchoolListView> {
   Widget _buildRow(School school) {
     return new FlatButton(
       child: new Text(school.name),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => StudentListView()));
+      },
     );
   }
 }

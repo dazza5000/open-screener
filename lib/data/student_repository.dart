@@ -20,7 +20,7 @@ class StudentRepository {
   static Future<List<Student>> getStudentsFromFirestore() async {
     CollectionReference ref = Firestore.instance
         .collection(studentReference)
-    .where(schoolIdReference, isEqualTo: 1);
+        .where(schoolIdReference, isEqualTo: 1);
 
     QuerySnapshot studentQuery =
         await ref.orderBy(studentFirstNameField).getDocuments();

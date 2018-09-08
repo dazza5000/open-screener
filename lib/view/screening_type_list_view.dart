@@ -14,8 +14,7 @@ class _ScreeningListViewState extends State<ScreeningTypeListView> {
   @override
   void initState() {
     super.initState();
-    ScreeningTypeRepository
-        .getScreeningsFromFirestore()
+    ScreeningTypeRepository.getScreeningsFromFirestore()
         .then((List<ScreeningType> screeningTypes) {
       setState(() {
         this.screeningTypes = screeningTypes;

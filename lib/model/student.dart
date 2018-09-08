@@ -1,6 +1,5 @@
 import 'package:meta/meta.dart';
 
-
 class Student {
   final String grade;
   final String teacher;
@@ -19,5 +18,4 @@ class Student {
     @required this.gender,
     @required this.peim,
   });
-
 }
