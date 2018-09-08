@@ -18,12 +18,12 @@ String studentGenderField = "gender";
 
 class StudentRepository {
   static Future<List<Student>> getStudentsFromFirestore() async {
-    CollectionReference ref = Firestore.instance
-        .collection(studentReference)
-        .where(schoolIdReference, isEqualTo: 1);
+    CollectionReference studentCollection = Firestore.instance
+        .collection(studentReference);
 
     QuerySnapshot studentQuery =
-        await ref.orderBy(studentFirstNameField).getDocuments();
+        await studentCollection.where(schoolIdReference, isEqualTo: 1)
+        .orderBy(studentFirstNameField).getDocuments();
 
     return studentQuery.documents.map((document) {
       return parseStudentFromFirebase(document);

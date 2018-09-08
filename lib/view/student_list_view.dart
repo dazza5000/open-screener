@@ -32,10 +32,8 @@ class _StartVisitViewState extends State<StudentListView> {
               ? new Center(child: new CircularProgressIndicator())
               : new ListView.builder(
                   padding: const EdgeInsets.all(16.0),
-                  itemCount: students.length * 2,
+                  itemCount: students.length,
                   itemBuilder: (_, index) {
-                    if (index.isOdd) return Divider();
-                    index = index ~/ 2;
                     return _buildRow(students[index]);
                   },
                 )),
