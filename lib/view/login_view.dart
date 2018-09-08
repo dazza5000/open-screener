@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginView> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: () {
-            Navigator.of(context).pushNamed(Constants.ROUTE_HOME_VIEW);
+            Navigator.of(context).pushNamed(Constants.ROUTE_SCHOOL_LIST_VIEW);
           },
           child: Text('Log In',),
         ),

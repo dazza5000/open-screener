@@ -38,13 +38,8 @@ class HomeViewState extends State<HomeView> {
         appBar: new AppBar(
           title: new Text(widget.title),
         ),
-        body: GridView.builder(
+        body: ListView.builder(
             scrollDirection: Axis.vertical,
-            gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(
-                childAspectRatio: 1.0,
-                crossAxisCount: 2,
-            crossAxisSpacing: 4.0,
-            mainAxisSpacing: 4.0),
             itemCount: homeButtons.length,
             padding: const EdgeInsets.all(4.0),
             itemBuilder: (context, index) {
