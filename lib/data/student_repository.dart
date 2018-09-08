@@ -2,9 +2,12 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:open_screener/model/student.dart';
 
+// School table
 String schoolReference = "school";
-String studentReference = "student";
 
+// Student table
+String studentReference = "student";
+String schoolIdReference = "school_id";
 String studentGradeField = "grade";
 String studentTeacherField = "teacher";
 String studentFirstNameField = "first_name";
@@ -16,9 +19,8 @@ String studentGenderField = "gender";
 class StudentRepository {
   static Future<List<Student>> getStudentsFromFirestore() async {
     CollectionReference ref = Firestore.instance
-        .collection(schoolReference)
-        .document("2HA7J6vXcTJFU2E3lfvx")
-        .collection(studentReference);
+        .collection(studentReference)
+    .where(schoolIdReference, isEqualTo: 1);
 
     QuerySnapshot studentQuery =
         await ref.orderBy(studentFirstNameField).getDocuments();
@@ -30,9 +32,8 @@ class StudentRepository {
 
   static Future<Student> getStudentFromFirestore(String studentId) async {
     CollectionReference ref = Firestore.instance
-        .collection(schoolReference)
-        .document("2HA7J6vXcTJFU2E3lfvx")
-        .collection(studentReference);
+        .collection(studentReference)
+        .where(schoolIdReference, isEqualTo: 1);
 
     Query query = ref.where(studentPeimField, isEqualTo: studentId);
 
