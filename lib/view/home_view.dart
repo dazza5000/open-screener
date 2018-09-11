@@ -1,5 +1,6 @@
 import 'package:open_screener/main.dart';
 import 'package:open_screener/util/color_util.dart';
+import 'package:open_screener/util/constants.dart';
 import 'package:open_screener/view/screening_type_list_view.dart';
 import 'package:open_screener/view/student_list_view.dart';
 import 'package:flutter/material.dart';
@@ -45,10 +46,7 @@ class HomeViewState extends State<HomeView> {
             itemBuilder: (context, index) {
               return MaterialButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => ScreeningTypeListView()));
+                    Navigator.of(context).pushNamed(Constants.ROUTE_SCREENING_TYPE_LIST_VIEW);
                   },
                   child: Text(homeButtons[index]),
                   color: ColorUtil.hexToColor(colorPrimary));
