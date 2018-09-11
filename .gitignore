@@ -13,6 +13,11 @@ doc/api/
 
 #ios specific
 ios/.generated/
+ios/Podfile*
+ios/Flutter/Debug.xcconfig
+ios/Flutter/Release.xcconfig
+ios/Runner.xcodeproj/project.pbxproj
+ios/Runner.xcworkspace/contents.xcworkspacedata
 
 #android specific
 android/app/google-services.json
