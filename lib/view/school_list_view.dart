@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:open_screener/data/school_repository.dart';
 import 'package:open_screener/model/school.dart';
+import 'package:open_screener/util/constants.dart';
 import 'package:open_screener/view/student_list_view.dart';
 
 class SchoolListView extends StatefulWidget {
@@ -53,8 +54,7 @@ class _SchoolListViewState extends State<SchoolListView> {
     return new FlatButton(
       child: new Text(school.name),
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => StudentListView()));
+        Navigator.of(context).pushNamed(Constants.ROUTE_STUDENT_LIST_VIEW);
       },
     );
   }
