@@ -2,31 +2,39 @@ service cloud.firestore {
     match/databases/{database}/documents {
 
         match /users/{user} {
-            allow read, write: if false;
+            //half helen admins and school admins can get and query users
+            allow get, list, create: if hasRole("halfHelenAdmin") || isSchoolAdminForThisSchool();
+            //half helen admins, school admins and own uses can modify user data
+            allow update, delete: if hasRole("halfHelenAdmin") || isSchoolAdminForThisSchool() || request.auth.uid == user;
         }
         
         match /roles/{user} {
-            allow read, write: if false;
+            allow get: if request.auth.uid == user || hasRole('halfHelenAdmin') || isSchoolAdminForThisSchool();
+            allow list, update, create, delete: if hasRole('halfHelenAdmin') || isSchoolAdminForThisSchool();
         }
 
         match /district/{district} {
-            allow read, write: if false;
+            //todo: add a case for district admin
+            allow read, write: if if hasRole("halfHelenAdmin") || isSchoolAdminForThisSchool();;
         }
         
         match /school/{school} {
-            allow read, write: if false;
+            allow read, write: if if hasRole("halfHelenAdmin") || isSchoolAdminForThisSchool();;
         }
 
         match /screening/{screening} {
+            //todo: add a case for screener, parent
             allow read, write: if false;
         }
 
         match /screening_type/{screening_type} {
-            allow read, write: if false;
+            //todo: to add a case for screener
+            allow read, write: if hasRole("halfHelenAdmin") || isSchoolAdminForThisSchool();;
         }
 
         match /student/{student} {
-            allow read, write: if false;
+            //todo: to add a case for screener, parent
+            allow read, write: if hasRole("halfHelenAdmin") || isSchoolAdminForThisSchool();
         }
     }
 
@@ -46,6 +54,11 @@ service cloud.firestore {
 
     function hasAnyRole(roles) {
         return isSignedIn() && getRoles().keys().hasAny(roles);
+    }
+
+    //todo: I think this won't work. The request.auth.schoolId may be wrong, may have to find that data in the db
+    function isSchoolAdminForThisSchool() {
+        return hasRole("schoolAdmin") && resource.data.schoolId == request.auth.schoolId;
     }
 
 }
