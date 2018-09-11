@@ -29,4 +29,23 @@ service cloud.firestore {
             allow read, write: if false;
         }
     }
+
+    //helper functions
+
+    function isSignedIn() {
+        return request.auth != null;
+    }
+
+    function getRoles() {
+        return get(/databases/$(database)/documents/roles/$(request.auth.uid)).data;
+    }
+
+    function hasRole(role) {
+        return isSignedIn() && getRoles()[role] == true;
+    }
+
+    function hasAnyRole(roles) {
+        return isSignedIn() && getRoles().keys().hasAny(roles);
+    }
+
 }
