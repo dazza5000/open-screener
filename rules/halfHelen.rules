@@ -1,0 +1,32 @@
+service cloud.firestore {
+    match/databases/{database}/documents {
+
+        match /users/{user} {
+            allow read, write: if false;
+        }
+        
+        match /roles/{user} {
+            allow read, write: if false;
+        }
+
+        match /district/{district} {
+            allow read, write: if false;
+        }
+        
+        match /school/{school} {
+            allow read, write: if false;
+        }
+
+        match /screening/{screening} {
+            allow read, write: if false;
+        }
+
+        match /screening_type/{screening_type} {
+            allow read, write: if false;
+        }
+
+        match /student/{student} {
+            allow read, write: if false;
+        }
+    }
+}
