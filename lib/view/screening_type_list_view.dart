@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:open_screener/data/screening_type_repository.dart';
 import 'package:open_screener/model/screening_type.dart';
+import 'package:open_screener/util/constants.dart';
 import 'package:open_screener/view/student_list_view.dart';
 
 class ScreeningTypeListView extends StatefulWidget {
@@ -50,8 +51,7 @@ class _ScreeningListViewState extends State<ScreeningTypeListView> {
           FlatButton(
             child: Text("Next"),
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => StudentListView()));
+              Navigator.of(context).pushNamed(Constants.ROUTE_STUDENT_LIST_VIEW);
             },
           ),
         ],
