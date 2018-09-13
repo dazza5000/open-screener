@@ -23,6 +23,7 @@ class HomeViewState extends State<HomeView> {
     "Incomplete",
     "Sync with Server",
     "Log out"
+    "Reporting"
   ];
 
   StudentListView startVisitView = new StudentListView();
