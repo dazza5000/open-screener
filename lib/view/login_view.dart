@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:open_screener/util/constants.dart';
-import 'package:open_screener/util/auth_util.dart'
+import 'package:open_screener/util/auth_util.dart';
 
 class LoginView extends StatefulWidget {
   static String tag = 'login-page';
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginView> {
                 Navigator.of(context).pushNamed(
                     Constants.ROUTE_SCHOOL_LIST_VIEW);
               }
-            })
+            });
           },
           child: Text(
             'Log In',
