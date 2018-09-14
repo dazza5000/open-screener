@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:open_screener/util/constants.dart';
+import 'package:open_screener/util/auth_util.dart';
 
 class LoginView extends StatefulWidget {
   static String tag = 'login-page';
@@ -8,6 +9,10 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginView> {
+
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -19,6 +24,7 @@ class _LoginPageState extends State<LoginView> {
       ),
     );
 
+
     final email = TextFormField(
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
@@ -27,6 +33,7 @@ class _LoginPageState extends State<LoginView> {
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
+        controller: _emailController,
     );
 
     final password = TextFormField(
@@ -37,6 +44,7 @@ class _LoginPageState extends State<LoginView> {
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
+      controller: _passwordController,
     );
 
     final loginButton = Padding(
@@ -48,7 +56,13 @@ class _LoginPageState extends State<LoginView> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: () {
-            Navigator.of(context).pushNamed(Constants.ROUTE_SCHOOL_LIST_VIEW);
+            AuthUtil.handleSignInEmail(_emailController.text, _passwordController.text).then((firebaseUser) {
+              print("The user id is: " + firebaseUser.uid);
+              if (firebaseUser != null) {
+                Navigator.of(context).pushNamed(
+                    Constants.ROUTE_SCHOOL_LIST_VIEW);
+              }
+            });
           },
           child: Text(
             'Log In',
