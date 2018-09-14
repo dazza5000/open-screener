@@ -10,8 +10,8 @@ class LoginView extends StatefulWidget {
 
 class _LoginPageState extends State<LoginView> {
 
-  String _email;
-  String _password;
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class _LoginPageState extends State<LoginView> {
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
-        onSaved: (value) => _email = value,
+        controller: _emailController,
     );
 
     final password = TextFormField(
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginView> {
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
-      onSaved: (value) => _password = value,
+      controller: _passwordController,
     );
 
     final loginButton = Padding(
@@ -56,7 +56,7 @@ class _LoginPageState extends State<LoginView> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: () {
-            AuthUtil.handleSignInEmail(_email, _password).then((firebaseUser) {
+            AuthUtil.handleSignInEmail(_emailController.text, _passwordController.text).then((firebaseUser) {
               print("The user id is: " + firebaseUser.uid);
               if (firebaseUser != null) {
                 Navigator.of(context).pushNamed(
