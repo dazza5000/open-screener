@@ -3,6 +3,16 @@ import 'dart:async';
 
 class AuthUtil {
 
+  static Future<FirebaseUser> getUserId() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseUser user = await auth.currentUser();
+
+    assert(user != null);
+    assert(await user.getIdToken() != null);
+
+    return user;
+  }
+
   static Future<FirebaseUser> handleSignInEmail(String email, String password) async {
     final FirebaseAuth auth = FirebaseAuth.instance;
     final FirebaseUser user = await auth.signInWithEmailAndPassword(
