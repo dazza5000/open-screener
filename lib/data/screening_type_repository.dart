@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:open_screener/model/screening_type.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-String screeningReference = "screening_type";
+String screeningReference = "screenings";
 String screeningNameField = "name";
 
 class ScreeningTypeRepository {

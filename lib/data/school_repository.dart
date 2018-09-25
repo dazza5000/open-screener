@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:open_screener/model/school.dart';
 
-String schoolReference = "school";
+String schoolReference = "schools";
 String schoolNameField = "name";
 
 class SchoolRepository {
