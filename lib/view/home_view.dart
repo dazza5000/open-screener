@@ -27,8 +27,6 @@ class HomeViewState extends State<HomeView> {
     "Reporting"
   ];
 
-  StudentListView startVisitView = new StudentListView();
-
   @override
   void dispose() {
     super.dispose();

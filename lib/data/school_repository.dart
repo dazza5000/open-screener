@@ -12,11 +12,11 @@ String schoolAdminField = "school_admin";
 class SchoolRepository {
   static Future<List<School>> getSchoolsFromFirestore() async {
     CollectionReference ref = Firestore.instance.collection(schoolReference);
-    final FirebaseUser user = await AuthUtil.getUserId();
+    final String userId = await AuthUtil.getUserId();
 
     QuerySnapshot schoolQuery =
         await ref
-            .where(schoolAdminField, isEqualTo: user.uid)
+            .where(schoolAdminField, isEqualTo: userId)
             .orderBy(schoolNameField)
             .getDocuments();
 
