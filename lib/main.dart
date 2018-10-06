@@ -33,7 +33,7 @@ Widget _handleCurrentScreen() {
           if (snapshot.hasData) {
             return new SchoolListView();
           }
-          return new LoginView();
+          return new LoginPage();
         }
       });
 }
