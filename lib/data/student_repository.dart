@@ -22,8 +22,7 @@ class StudentRepository {
         .collection(studentReference);
 
     QuerySnapshot studentQuery =
-        await studentCollection.where(schoolIdReference, isEqualTo: 1)
-        .orderBy(studentFirstNameField).getDocuments();
+        await studentCollection.orderBy(studentFirstNameField).getDocuments();
 
     return studentQuery.documents.map((document) {
       return parseStudentFromFirebase(document);

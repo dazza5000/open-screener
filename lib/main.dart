@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:open_screener/util/color_util.dart';
 import 'package:open_screener/util/routes.dart';
 import 'package:open_screener/view/login_view.dart';
+import 'package:open_screener/view/school_list_view.dart';
 
 String colorPrimary = "#35bbaa";
 String appName = "Open Screener";
@@ -15,9 +17,21 @@ class OpenScreener extends StatelessWidget {
       title: appName,
       theme: _openScreenerTheme,
       routes: Routes.routes,
-      home: new LoginView(),
+      home: _handleCurrentScreen(),
     );
   }
+}
+
+Widget _handleCurrentScreen() {
+  return new FutureBuilder<FirebaseUser>(
+      future: FirebaseAuth.instance.currentUser(),
+      builder: (BuildContext context, firebaseUser) {
+        if (firebaseUser != null) {
+          return new SchoolListView();
+        }
+        return new LoginView();
+      }
+  );
 }
 
 final ThemeData _openScreenerTheme = _buildOpenScreenerTheme();
