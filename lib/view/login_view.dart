@@ -57,10 +57,14 @@ class _LoginPageState extends State<LoginView> {
           height: 42.0,
           onPressed: () {
             AuthUtil.handleSignInEmail(_emailController.text, _passwordController.text).then((firebaseUser) {
-              print("The user id is: " + firebaseUser.uid);
               if (firebaseUser != null) {
+                print("The user id is: " + firebaseUser.uid);
                 Navigator.of(context).pushNamed(
                     Constants.ROUTE_SCHOOL_LIST_VIEW);
+              } else {
+                Scaffold.of(context).showSnackBar(new SnackBar(
+                  content: new Text("Login unsuccessful."),
+                ));
               }
             });
           },
