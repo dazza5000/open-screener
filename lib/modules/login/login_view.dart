@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:open_screener/modules/login/login_contract.dart';
 import 'package:open_screener/util/constants.dart';
 import 'package:open_screener/util/auth_util.dart';
 
-class LoginView extends StatefulWidget {
+class LoginPage extends StatefulWidget {
   static String tag = 'login-page';
   @override
   _LoginPageState createState() => new _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginView> {
+class _LoginPageState extends State<LoginPage> implements LoginView {
 
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+
+  LoginPresenter _loginPresenter;
+
+  @override
+  setPresenter(LoginPresenter presenter) {
+    _loginPresenter = presenter;
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -56,17 +66,7 @@ class _LoginPageState extends State<LoginView> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: () {
-            AuthUtil.handleSignInEmail(_emailController.text, _passwordController.text).then((firebaseUser) {
-              if (firebaseUser != null) {
-                print("The user id is: " + firebaseUser.uid);
-                Navigator.of(context).pushNamed(
-                    Constants.ROUTE_SCHOOL_LIST_VIEW);
-              } else {
-                Scaffold.of(context).showSnackBar(new SnackBar(
-                  content: new Text("Login unsuccessful."),
-                ));
-              }
-            });
+            _loginPresenter.login(_emailController.text, _passwordController.text);
           },
           child: Text(
             'Log In',
@@ -100,5 +100,18 @@ class _LoginPageState extends State<LoginView> {
         ),
       ),
     );
+  }
+
+  @override
+  void navigateToSchoolList() {
+    Navigator.of(context).pushNamed(
+        Constants.ROUTE_SCHOOL_LIST_VIEW);
+  }
+
+  @override
+  void showException(String exception) {
+    Scaffold.of(context).showSnackBar(new SnackBar(
+      content: new Text(exception),
+    ));
   }
 }

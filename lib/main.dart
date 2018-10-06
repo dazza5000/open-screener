@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:open_screener/modules/login/login_view.dart';
+import 'package:open_screener/modules/school_list_view.dart';
 import 'package:open_screener/util/color_util.dart';
 import 'package:open_screener/util/routes.dart';
-import 'package:open_screener/view/login_view.dart';
-import 'package:open_screener/view/school_list_view.dart';
+
 
 String colorPrimary = "#35bbaa";
 String appName = "Open Screener";
