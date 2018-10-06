@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:open_screener/model/school.dart';
 import 'package:open_screener/util/auth_util.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 
 String schoolReference = "schools";

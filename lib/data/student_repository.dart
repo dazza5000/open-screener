@@ -6,7 +6,7 @@ import 'package:open_screener/model/student.dart';
 String schoolReference = "schools";
 
 // Student table
-String studentReference = "student";
+String studentReference = "students";
 String schoolIdReference = "school_id";
 String studentGradeField = "grade";
 String studentTeacherField = "teacher";
