@@ -23,15 +23,18 @@ class OpenScreener extends StatelessWidget {
 }
 
 Widget _handleCurrentScreen() {
-  return new FutureBuilder<FirebaseUser>(
-      future: FirebaseAuth.instance.currentUser(),
-      builder: (BuildContext context, firebaseUser) {
-        if (firebaseUser != null) {
-          return new SchoolListView();
+  return new StreamBuilder<FirebaseUser>(
+      stream: FirebaseAuth.instance.onAuthStateChanged,
+      builder: (BuildContext context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return new Center(child: new CircularProgressIndicator());
+        } else {
+          if (snapshot.hasData) {
+            return new SchoolListView();
+          }
+          return new LoginView();
         }
-        return new LoginView();
-      }
-  );
+      });
 }
 
 final ThemeData _openScreenerTheme = _buildOpenScreenerTheme();
