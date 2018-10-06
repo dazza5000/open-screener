@@ -3,6 +3,16 @@ import 'dart:async';
 
 class AuthUtil {
 
+  static Future<String> getUserId() async {
+    final FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseUser user = await auth.currentUser();
+
+    assert(user != null);
+    assert(await user.getIdToken() != null);
+
+    return user.uid;
+  }
+
   static Future<FirebaseUser> handleSignInEmail(String email, String password) async {
 
     if (email.isEmpty || password.isEmpty) {

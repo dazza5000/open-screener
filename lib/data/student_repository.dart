@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:open_screener/model/student.dart';
 
 // School table
-String schoolReference = "school";
+String schoolReference = "schools";
 
 // Student table
 String studentReference = "student";
