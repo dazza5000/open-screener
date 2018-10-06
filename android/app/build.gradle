@@ -14,6 +14,8 @@ if (flutterRoot == null) {
 apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
+com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
+
 android {
     compileSdkVersion 27
 
