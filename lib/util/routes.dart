@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:open_screener/main.dart';
+import 'package:open_screener/modules/home/home_view.dart';
+import 'package:open_screener/modules/school_list_view.dart';
+import 'package:open_screener/modules/screening_type_list_view.dart';
+import 'package:open_screener/modules/student_list_view.dart';
 import 'package:open_screener/util/constants.dart';
-import 'package:open_screener/view/home_view.dart';
-import 'package:open_screener/view/school_list_view.dart';
-import 'package:open_screener/view/screening_type_list_view.dart';
-import 'package:open_screener/view/student_list_view.dart';
+
 
 class Routes {
   static final routes = <String, WidgetBuilder>{

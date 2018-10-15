@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:open_screener/data/student_repository.dart';
 import 'package:open_screener/model/student.dart';
-import 'package:open_screener/view/student_detail_view.dart';
+import 'package:open_screener/modules/student_detail_view.dart';
 
 class StudentListView extends StatefulWidget {
   @override

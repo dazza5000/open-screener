@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:open_screener/data/school_repository.dart';
 import 'package:open_screener/model/school.dart';
 import 'package:open_screener/util/constants.dart';
-import 'package:open_screener/view/student_list_view.dart';
 
 class SchoolListView extends StatefulWidget {
   @override

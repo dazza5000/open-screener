@@ -6,7 +6,7 @@ import 'package:open_screener/model/student.dart';
 String schoolReference = "schools";
 
 // Student table
-String studentReference = "student";
+String studentReference = "students";
 String schoolIdReference = "school_id";
 String studentGradeField = "grade";
 String studentTeacherField = "teacher";
@@ -22,8 +22,7 @@ class StudentRepository {
         .collection(studentReference);
 
     QuerySnapshot studentQuery =
-        await studentCollection.where(schoolIdReference, isEqualTo: 1)
-        .orderBy(studentFirstNameField).getDocuments();
+        await studentCollection.orderBy(studentFirstNameField).getDocuments();
 
     return studentQuery.documents.map((document) {
       return parseStudentFromFirebase(document);

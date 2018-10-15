@@ -14,6 +14,11 @@ class AuthUtil {
   }
 
   static Future<FirebaseUser> handleSignInEmail(String email, String password) async {
+
+    if (email.isEmpty || password.isEmpty) {
+      return null;
+    }
+
     final FirebaseAuth auth = FirebaseAuth.instance;
     final FirebaseUser user = await auth.signInWithEmailAndPassword(
         email: email, password: password);
